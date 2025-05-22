@@ -12,7 +12,6 @@ import logging
 import traceback
 from datetime import datetime
 
-# Configure root logger first
 logging.basicConfig(
     level=logging.DEBUG,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -22,7 +21,6 @@ logging.basicConfig(
     ]
 )
 
-# Create Flask app
 static_folder = os.path.abspath('design/dist')
 logging.info(f"Static folder path: {static_folder}")
 logging.info(f"Static folder exists: {os.path.exists(static_folder)}")
@@ -31,12 +29,9 @@ app = Flask(__name__,
            static_folder=static_folder,
            static_url_path='')
 
-# Configure Flask's logger
 app.logger.setLevel(logging.DEBUG)
-# Remove default handlers
 for handler in app.logger.handlers[:]:
     app.logger.removeHandler(handler)
-# Add our handlers
 console_handler = logging.StreamHandler(sys.stdout)
 file_handler = logging.FileHandler('app.log')
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -45,7 +40,6 @@ file_handler.setFormatter(formatter)
 app.logger.addHandler(console_handler)
 app.logger.addHandler(file_handler)
 
-# Also configure werkzeug logger
 werkzeug_logger = logging.getLogger('werkzeug')
 werkzeug_logger.setLevel(logging.DEBUG)
 for handler in werkzeug_logger.handlers[:]:
@@ -53,7 +47,6 @@ for handler in werkzeug_logger.handlers[:]:
 werkzeug_logger.addHandler(console_handler)
 werkzeug_logger.addHandler(file_handler)
 
-# Add request logging middleware
 @app.before_request
 def log_request_info():
     app.logger.info('Headers: %s', request.headers)
@@ -67,7 +60,6 @@ settings_manager = SettingsManager()
 chatbot = Chatbot(settings_manager)
 image_generator = ImageGenerator(settings_manager)
 
-# Create images directory if it doesn't exist
 IMAGES_DIR = os.path.join(os.path.dirname(__file__), 'data', 'generated_images')
 os.makedirs(IMAGES_DIR, exist_ok=True)
 
@@ -76,22 +68,18 @@ def serve_index():
     app.logger.info("Serving index.html")
     return send_from_directory(app.static_folder, 'index.html')
 
-# Route to serve static assets (CSS, JS, etc.)
 @app.route('/<path:path>')
 def serve_static(path):
     app.logger.info(f"Serving static file: {path}")
     if os.path.exists(os.path.join(app.static_folder, path)):
         return send_from_directory(app.static_folder, path)
     else:
-        # For client-side routing, serve index.html
         return send_from_directory(app.static_folder, 'index.html')
 
-# Add this after the CORS(app) line
 @app.route('/data/<path:filename>')
 def serve_data(filename):
     return send_from_directory('data', filename)
 
-# API routes
 @app.route('/api/settings', methods=['GET'])
 def get_settings():
     try:
@@ -140,18 +128,15 @@ def generate_image():
             app.logger.error("No prompt provided in request")
             return jsonify({'error': 'No prompt provided'}), 400
         
-        # Generate image using the image generator
         app.logger.info(f"Generating image for prompt: {prompt}")
         try:
             image_data = image_generator.generate_image(prompt)
             app.logger.info("Image generated successfully")
             
-            # Save the image
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
             filename = f'image_{timestamp}.png'
             filepath = os.path.join(IMAGES_DIR, filename)
             
-            # Decode base64 image data and save
             app.logger.info("Saving generated image...")
             try:
                 image_bytes = base64.b64decode(image_data)
@@ -162,7 +147,6 @@ def generate_image():
                 app.logger.error(f"Error saving image: {str(e)}")
                 return jsonify({'error': 'Failed to save generated image'}), 500
             
-            # Return the relative path to the image
             return jsonify({'image_url': f'/api/images/{filename}'})
             
         except Exception as e:
@@ -214,9 +198,7 @@ def clear_chat_history():
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    # Create necessary directories
     os.makedirs(os.path.join('data', 'chat_history'), exist_ok=True)
     os.makedirs(os.path.join('data', 'generated_images'), exist_ok=True)
     
-    # Start the server
     app.run(host='localhost', port=8000, debug=True) 
