@@ -1,6 +1,7 @@
 # chatbot com geração di imagem
 
 PyQt5 é uma bosta
+Integrantes: Gabriel Augusto Dionisio Minervini, Bianca Loreslaine, Matheus Borges de Oliveira de Serpa
 
 ## Features
 
