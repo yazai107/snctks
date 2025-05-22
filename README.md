@@ -29,8 +29,7 @@ python main.py
 ## Usage
 
 - Digita as msg
-- Gera pela seção lá em cima ou digita `/image` com uma prompt decente em ingles
-  Exemplo `/image a beautiful sunset over mountains`
+- Gera pela seção lá em cima ou digita `/image` com uma prompt decente em ingles, exemplo: `/image cat smoking catnip`
 
 ## Requirements
 
