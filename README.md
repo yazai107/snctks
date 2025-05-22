@@ -1,13 +1,12 @@
 # chatbot com geração di imagem
 
-PyQt5 é uma bosta
 Integrantes: Gabriel Augusto Dionisio Minervini, Bianca Loreslaine, Matheus Borges de Oliveira de Serpa
 
 ## Features
 
-- 50 anos linkando a frontend e o backend
-- 25 tentando conseguir key e modelo
-- e mais 10 anos tentando descobrir porque o pyqt é tão horroroso.
+- react tailwind python pyqt5 eletronicos computador mouse teclado pc tela mão 
+- modelo do huggingface muito pica
+- cnoversa com ia e gerar imagem pica (nao tem filtro)
 
 ## Setup
 
