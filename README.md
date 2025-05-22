@@ -1,38 +1,36 @@
 # AI Chatbot with Image Generation
 
-A PyQt5-based desktop application that combines a chatbot powered by Deepseek R1 and image generation capabilities.
+PyQt5 é uma bosta
 
 ## Features
 
-- Modern, dark-themed UI
-- Chat interface with the Deepseek R1 model
-- Image generation using Stable Diffusion API
-- Real-time image display
-- Message history
+- 50 anos linkando a frontend e o backend
+- 25 tentando conseguir key e modelo
+- e mais 10 anos tentando descobrir porque o pyqt é tão horroroso.
 
 ## Setup
 
-1. Install the required dependencies:
+1. Instala os requerimento
 ```bash
 pip install -r requirements.txt
 ```
 
-2. Set up your environment variables:
-Create a `.env` file in the project root and add your API key:
+2. Seta as variável:
+Cria um `.env` na root e adiciona tua key:
 ```
-STABILITY_API_KEY=your_api_key_here
+STABILITY_API_KEY=meteaapikeyaki
 ```
 
-3. Run the application:
+3. Dá run
 ```bash
 python main.py
 ```
 
 ## Usage
 
-- Type your message in the input field and press Enter or click Send to chat with the AI
-- To generate an image, type `/image` followed by your prompt
-  Example: `/image a beautiful sunset over mountains`
+- Digita as msg
+- Gera pela seção lá em cima ou digita `/image` com uma prompt decente em ingles
+  Exemplo `/image a beautiful sunset over mountains`
 
 ## Requirements
 
@@ -46,4 +44,4 @@ python main.py
 
 ## Note
 
-The image generation feature requires a Stability AI API key. You can get one by signing up at https://stability.ai/ 
+usa isso daki pelo amor de deus https://stability.ai/ 
