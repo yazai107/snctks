@@ -1,4 +1,4 @@
-# AI Chatbot with Image Generation
+# chatbot com geração di imagem
 
 PyQt5 é uma bosta
 
