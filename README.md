@@ -1,6 +1,6 @@
 # chatbot com geração di imagem
 
-Integrantes: Gabriel Augusto Dionisio Minervini, Bianca Loreslaine, Matheus Borges de Oliveira de Serpa
+Integrantes: Gabriel Augusto Dionisio Minervini, Bianca Loreslaine, Matheus Borges Oliveira de Serpa
 
 ## Features
 
