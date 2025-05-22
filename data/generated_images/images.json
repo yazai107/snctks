@@ -1,0 +1,46 @@
+[
+  {
+    "path": "data\\generated_images\\generated_1.png",
+    "prompt": "cat"
+  },
+  {
+    "path": "data\\generated_images\\generated_2.png",
+    "prompt": "cat"
+  },
+  {
+    "path": "data\\generated_images\\generated_3.png",
+    "prompt": "cat"
+  },
+  {
+    "path": "data\\generated_images\\generated_4.png",
+    "prompt": "teste"
+  },
+  {
+    "path": "data\\generated_images\\generated_5.png",
+    "prompt": "adolf hitler holding a cat"
+  },
+  {
+    "path": "data\\generated_images\\generated_6.png",
+    "prompt": "cat"
+  },
+  {
+    "path": "data\\generated_images\\generated_7.png",
+    "prompt": "testing",
+    "timestamp": "2025-05-22 14:47:39.558180"
+  },
+  {
+    "path": "data\\generated_images\\generated_8.png",
+    "prompt": "an astronaut gnome in space",
+    "timestamp": "2025-05-22 14:48:14.973776"
+  },
+  {
+    "path": "data\\generated_images\\generated_9.png",
+    "prompt": "an astronaut gnome in space",
+    "timestamp": "2025-05-22 14:48:18.068288"
+  },
+  {
+    "path": "data\\generated_images\\generated_10.png",
+    "prompt": "cat smoking catnip",
+    "timestamp": "2025-05-22 15:02:07.038980"
+  }
+]

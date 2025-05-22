@@ -1,0 +1,7 @@
+node_modules/
+arya/
+__pycache__/
+*.pyc
+design/dist/
+data/user_settings_json
+app.log
