@@ -3,3 +3,8 @@ arya/
 __pycache__/
 *.pyc
 app.log
+.env
+data/user_settings.json
+data/chat_history/
+data/generated_images/
+design/dist/
