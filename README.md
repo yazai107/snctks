@@ -4,9 +4,9 @@ Integrantes: Gabriel Augusto Dionisio Minervini, Bianca Loreslaine, Matheus Borg
 
 ## Features
 
-- 50 anos linkando a frontend e o backend
-- 25 tentando conseguir key e modelo
-- e mais 10 anos tentando descobrir porque o pyqt é tão horroroso.
+- react tailwind python pyqt5 eletronicos computador mouse teclado pc tela mão 
+- modelo do huggingface muito pica
+- cnoversa com ia e gerar imagem pica (nao tem filtro)
 
 ## Setup
 
@@ -29,8 +29,7 @@ python main.py
 ## Usage
 
 - Digita as msg
-- Gera pela seção lá em cima ou digita `/image` com uma prompt decente em ingles
-  Exemplo `/image a beautiful sunset over mountains`
+- Gera pela seção lá em cima ou digita `/image` com uma prompt decente em ingles, exemplo: `/image cat smoking catnip`
 
 ## Requirements
 
