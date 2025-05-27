@@ -95,10 +95,11 @@ class SettingsManager:
                 if 'openai_key' in data['api']:
                     self.openai_key = data['api']['openai_key']
                     self.logger.info(f"Loaded OpenAI key: {self.openai_key[:5]}...")
-                    if not self.openai_key.startswith('sk-'):
-                        self.logger.error("OpenAI key does not start with 'sk-'")
-                    if len(self.openai_key) < 20:
-                        self.logger.error("OpenAI key appears to be too short")
+
+            # Ensure API keys are properly set in their respective sections
+            if hasattr(self.image, 'stability_api_key'):
+                self.image.stability_api_key = data.get('image', {}).get('stability_api_key', '')
+                self.logger.info(f"Loaded Stability API key: {self.image.stability_api_key[:5]}...")
 
             self.logger.info("Settings loaded successfully.")
         except FileNotFoundError:
@@ -144,6 +145,11 @@ class SettingsManager:
         }
 
     def get_setting(self, section, key, default=None):
+        if section == 'api':
+            if key == 'openrouter_key':
+                return self.openrouter_key
+            elif key == 'openai_key':
+                return self.openai_key
         return self.get_all_settings().get(section, {}).get(key, default)
 
     def set_setting(self, section, key, value):
