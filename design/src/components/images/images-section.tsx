@@ -59,10 +59,12 @@ export function ImagesSection() {
       })
     } catch (error) {
       console.error('Error generating image:', error)
+      const errorMessage = error instanceof Error ? error.message : "Failed to generate image. Please try again."
       toast({
-        title: "Error",
-        description: error instanceof Error ? error.message : "Failed to generate image. Please try again.",
+        title: "Error Generating Image",
+        description: errorMessage,
         variant: "destructive",
+        duration: 10000, // Show for 10 seconds to give time to read
       })
     }
   }

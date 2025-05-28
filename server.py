@@ -128,7 +128,11 @@ def generate_image():
             app.logger.error("No prompt provided in request")
             return jsonify({'error': 'No prompt provided'}), 400
         
-        app.logger.info(f"Generating image for prompt: {prompt}")
+        app.logger.info("=== Image Generation Request ===")
+        app.logger.info(f"Prompt: {prompt}")
+        app.logger.info(f"Request Headers: {dict(request.headers)}")
+        app.logger.info(f"Request Body: {json.dumps(data, indent=2)}")
+        
         try:
             image_data = image_generator.generate_image(prompt)
             app.logger.info("Image generated successfully")
@@ -144,20 +148,21 @@ def generate_image():
                     f.write(image_bytes)
                 app.logger.info(f"Image saved to {filepath}")
             except Exception as e:
-                app.logger.error(f"Error saving image: {str(e)}")
-                return jsonify({'error': 'Failed to save generated image'}), 500
+                error_msg = f"Error saving image: {str(e)}\nTraceback: {traceback.format_exc()}"
+                app.logger.error(error_msg)
+                return jsonify({'error': error_msg}), 500
             
             return jsonify({'image_url': f'/api/images/{filename}'})
             
         except Exception as e:
-            app.logger.error(f"Error in image_generator.generate_image: {str(e)}")
-            app.logger.error(f"Traceback: {traceback.format_exc()}")
-            return jsonify({'error': str(e)}), 500
+            error_msg = f"Error in image generation: {str(e)}\nTraceback: {traceback.format_exc()}"
+            app.logger.error(error_msg)
+            return jsonify({'error': error_msg}), 500
             
     except Exception as e:
-        app.logger.error(f"Unexpected error in generate_image endpoint: {str(e)}")
-        app.logger.error(f"Traceback: {traceback.format_exc()}")
-        return jsonify({'error': str(e)}), 500
+        error_msg = f"Unexpected error in generate_image endpoint: {str(e)}\nTraceback: {traceback.format_exc()}"
+        app.logger.error(error_msg)
+        return jsonify({'error': error_msg}), 500
 
 @app.route('/api/images')
 def list_images():

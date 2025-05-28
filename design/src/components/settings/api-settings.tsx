@@ -19,8 +19,11 @@ export function ApiSettings({ settings, onSave }: ApiSettingsProps) {
     setFormData(settings);
   }, [settings]);
 
+  // Function to handle changes in input fields
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // Destructure the name and value properties from the event target
     const { name, value } = e.target;
+    // Update the form data state with the new value
     setFormData(prev => ({
       ...prev,
       [name]: value,
