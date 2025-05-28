@@ -18,6 +18,11 @@ class Chatbot:
         
         logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
         self.logger = logging.getLogger(__name__)
+        
+        # Add debug logging for API key
+        self.logger.info(f"OpenRouter API key loaded: {'Present' if self.api_key else 'Missing'}")
+        if self.api_key:
+            self.logger.info(f"API key starts with: {self.api_key[:10]}...")
 
     def generate_response(self, prompt: str) -> str:
         logging.info(f"Generating response for prompt: '{prompt[:50]}...'")

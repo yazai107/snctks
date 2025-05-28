@@ -147,6 +147,9 @@ class SettingsManager:
     def get_setting(self, section, key, default=None):
         if section == 'api':
             if key == 'openrouter_key':
+                self.logger.info(f"Getting OpenRouter key: {'Present' if self.openrouter_key else 'Missing'}")
+                if self.openrouter_key:
+                    self.logger.info(f"OpenRouter key starts with: {self.openrouter_key[:10]}...")
                 return self.openrouter_key
             elif key == 'openai_key':
                 return self.openai_key

@@ -65,15 +65,26 @@ os.makedirs(IMAGES_DIR, exist_ok=True)
 
 @app.route('/')
 def serve_index():
-    app.logger.info("Serving index.html")
+    app.logger.info("=== Root Route Request ===")
+    app.logger.info(f"Static folder: {app.static_folder}")
+    app.logger.info(f"Static folder exists: {os.path.exists(app.static_folder)}")
+    app.logger.info(f"Index.html exists: {os.path.exists(os.path.join(app.static_folder, 'index.html'))}")
+    app.logger.info(f"Request headers: {dict(request.headers)}")
+    app.logger.info(f"Request remote addr: {request.remote_addr}")
     return send_from_directory(app.static_folder, 'index.html')
 
 @app.route('/<path:path>')
 def serve_static(path):
-    app.logger.info(f"Serving static file: {path}")
+    app.logger.info(f"=== Static File Request ===")
+    app.logger.info(f"Requested path: {path}")
+    app.logger.info(f"Full path: {os.path.join(app.static_folder, path)}")
+    app.logger.info(f"File exists: {os.path.exists(os.path.join(app.static_folder, path))}")
+    app.logger.info(f"Request headers: {dict(request.headers)}")
+    app.logger.info(f"Request remote addr: {request.remote_addr}")
     if os.path.exists(os.path.join(app.static_folder, path)):
         return send_from_directory(app.static_folder, path)
     else:
+        app.logger.info("File not found, serving index.html")
         return send_from_directory(app.static_folder, 'index.html')
 
 @app.route('/data/<path:filename>')
@@ -206,4 +217,4 @@ if __name__ == '__main__':
     os.makedirs(os.path.join('data', 'chat_history'), exist_ok=True)
     os.makedirs(os.path.join('data', 'generated_images'), exist_ok=True)
     
-    app.run(host='localhost', port=8000, debug=True) 
+    app.run(host='0.0.0.0', port=8000, debug=True) 
